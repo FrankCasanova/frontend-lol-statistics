@@ -192,6 +192,7 @@ const PlayerCard = ({ playerName, onNotesUpdate }) => {
               repeat: Infinity,
               repeatType: "reverse"
             }}
+            className="text-center text-2xl font-bold"
           >
             Find them in the cosmos...
           </motion.p>

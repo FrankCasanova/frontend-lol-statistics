@@ -21,16 +21,16 @@ const SearchForm = ({ onSearch }) => {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="dark-fantasy-search flex flex-col items-center space-y-4 p-6 bg-gradient-to-r from-black to-gray-800  shadow-lg"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
+      className="dark-fantasy-search flex flex-col items-center space-y-4 p-6 shadow-lg w-full md:w-1/3"
+      initial={{ opacity: 0.8, y: -50 }}
+      animate={{ opacity: 0.8, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <motion.label
         htmlFor="playerName"
         className="w-full"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        
+        
       >
         <span className="sr-only">Search Player Name</span>
         <motion.input
@@ -39,8 +39,8 @@ const SearchForm = ({ onSearch }) => {
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}
           placeholder="Enter summoner name..."
-          className="dark-fantasy-input px-4 py-2 w-full bg-slate-800 text-white placeholder-gray-500  border-red-500  shadow-inner focus:outline-none focus:ring-1 focus:ring-red-500"
-          whileFocus={{ scale: 1.02, borderColor: "#ff4655" }}
+          className="dark-fantasy-input px-4 py-2 w-full bg-transparent  text-white placeholder-gray-400 shadow-inner border-b border-l border-gray-700 focus:outline-none focus:none"
+          
         />
       </motion.label>
       <motion.button

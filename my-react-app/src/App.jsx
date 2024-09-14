@@ -66,12 +66,12 @@ function App() {
       {/* <FloatingAsteroids /> */}
 
       <motion.div
-        className="absolute top-8 left-8"
+        className="absolute top-8 left-0 right-0 mx-auto"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120, delay: 0.5 }}
       >
-        <SearchForm onSearch={handleSearch} />
+        <SearchForm  onSearch={handleSearch} />
       </motion.div>
 
       <motion.div
