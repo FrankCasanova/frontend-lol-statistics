@@ -79,13 +79,9 @@ function App() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, delay: 0.7 }}
       >
-        <div className="w-full md:w-1/2 lg:w-5/12">
-          <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
-        </div>
-
         {playerNotes && (
           <motion.div
-            className="w-full md:w-1/2 lg:w-7/12 px-4 py-6 shadow-lg bg-gray-900 bg-opacity-80 rounded-lg"
+            className="w-full md:w-1/2 lg:w-7/12 order-1 md:order-2 px-4 py-6 shadow-lg bg-gray-900 bg-opacity-80 rounded-lg"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1, ...combinedAnimations }}
             transition={{ type: "spring", stiffness: 200, delay: 0.9 }}
@@ -101,6 +97,10 @@ function App() {
             </motion.p>
           </motion.div>
         )}
+
+        <div className="w-full md:w-1/2 lg:w-5/12 order-2 md:order-1">
+          <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
+        </div>
       </motion.div>
     </motion.div>
   );
