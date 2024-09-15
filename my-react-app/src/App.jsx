@@ -4,7 +4,6 @@ import PlayerCard from './components/PlayerCard';
 import SearchForm from './components/SearchForm';
 import StarryBackground from './components/StarryBackground';
 import musicBackground from "/soundFxs/backGroundMusic.mp3"
-
 import useSound from 'use-sound';
 
 function App() {
@@ -24,6 +23,7 @@ function App() {
   const handleNotesUpdate = (notes) => {
     setPlayerNotes(notes);
   };
+
   const combinedAnimations = {
     y: ["-2%", "2%"],
     boxShadow: [
@@ -49,48 +49,49 @@ function App() {
 
   return (
     <motion.div
-      className="App min-h-screen bg-black flex flex-col items-center justify-center relative overflow-hidden"
+      className="App min-h-screen bg-black flex flex-col items-center justify-start relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       <video
-    autoPlay
-    loop
-    muted
-    className="absolute w-full h-full object-cover"
-    src="videoplayback.mp4"
-    style={{opacity: 0.2}}
-  />
+        autoPlay
+        loop
+        muted
+        className="absolute w-full h-full object-cover"
+        src="bgVid.mp4"
+        style={{opacity: 0.2}}
+      />
       <StarryBackground />
-      {/* <FloatingAsteroids /> */}
 
       <motion.div
-        className="absolute top-8 left-0 right-0 mx-auto"
+        className="w-full px-4 sm:px-6 lg:px-8 mt-8 sm:mt-16"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120, delay: 0.5 }}
       >
-        <SearchForm  onSearch={handleSearch} />
+        <SearchForm onSearch={handleSearch} />
       </motion.div>
 
       <motion.div
-        className="flex items-start space-x-8 mt-16"
+        className="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-4 lg:space-x-8 mt-8 sm:mt-16 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, delay: 0.7 }}
       >
-        <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
+        <div className="w-full md:w-1/2 lg:w-5/12">
+          <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
+        </div>
 
         {playerNotes && (
           <motion.div
-            className="w-full max-w-3xl mx-auto px-4 py-6 shadow-lg bg-gray-900 bg-opacity-80 rounded-lg"
+            className="w-full md:w-1/2 lg:w-7/12 px-4 py-6 shadow-lg bg-gray-900 bg-opacity-80 rounded-lg"
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1,...combinedAnimations }}
+            animate={{ scale: 1, opacity: 1, ...combinedAnimations }}
             transition={{ type: "spring", stiffness: 200, delay: 0.9 }}
           >
             <motion.p
-              className="text-2xl md:text-3xl lg:text-4xl italic text-yellow-300 leading-relaxed tracking-wide"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl italic text-yellow-300 leading-relaxed tracking-wide"
               style={{ fontFamily: 'Beleren', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
