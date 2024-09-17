@@ -5,6 +5,7 @@ import clickSfx from '/soundFxs/clickSearchButton.mp3';
 import hoverFx from '/soundFxs/hoverButton.mp3';
 
 
+// eslint-disable-next-line react/prop-types
 const SearchForm = ({ onSearch }) => {
   const [playerName, setPlayerName] = useState('');
 
