@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import useSound from 'use-sound';
 import clickSfx from '/soundFxs/clickSearchButton.mp3';
-
-
-
+import hoverFx from '/soundFxs/hoverButton.mp3';
 
 
 const SearchForm = ({ onSearch }) => {
@@ -17,6 +15,7 @@ const SearchForm = ({ onSearch }) => {
   };
 
   const [play] = useSound(clickSfx);
+  const [playHover] = useSound(hoverFx);
 
   return (
     <motion.form
@@ -49,6 +48,7 @@ const SearchForm = ({ onSearch }) => {
         whileHover={{ scale: 1.05, backgroundColor: "#ff4655" }}
         whileTap={{ scale: 0.95 }}
         onClick={play}
+        onMouseOver={playHover}
       >
         Search
       </motion.button>

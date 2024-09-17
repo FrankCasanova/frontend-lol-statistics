@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 import PlayerCard from './components/PlayerCard';
 import SearchForm from './components/SearchForm';
 import StarryBackground from './components/StarryBackground';
-import musicBackground from "/soundFxs/backGroundMusic.mp3"
+import musicBackground from "/soundFxs/bgMusic.mp3"
 import useSound from 'use-sound';
 
 function App() {
   const [playerName, setPlayerName] = useState('');
   const [playerNotes, setPlayerNotes] = useState('');
 
-  const [play] = useSound(musicBackground, { volume: 0.5, loop: true });
+  const [play] = useSound(musicBackground, { volume: 0.4 });
 
   useEffect(() => {
     play();
@@ -52,15 +52,14 @@ function App() {
       className="App min-h-screen bg-black flex flex-col items-center justify-start relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 2, ease: "easeInOut" }}
     >
       <video
         autoPlay
         loop
         muted
-        className="absolute w-full h-full object-cover"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-[10s] animate-fadeIn"
         src="bgVid.mp4"
-        style={{opacity: 0.2}}
       />
       <StarryBackground />
 
@@ -98,7 +97,7 @@ function App() {
           </motion.div>
         )}
 
-        <div className="w-full md:w-1/2 lg:w-5/12 order-2 md:order-1">
+        <div className="w-full md:w-1/2 lg:w-5/12 order-2 md:order-1 md:mx-auto">
           <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
         </div>
       </motion.div>
