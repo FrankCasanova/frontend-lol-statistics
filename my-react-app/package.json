@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "homepage": "https://frankcasanova.github.io/my-react-app"
+    "homepage": "https://frankcasanova.github.io/frontend-lol-statistics"
   },
   "dependencies": {
     "framer-motion": "^11.5.4",
