@@ -194,7 +194,7 @@ const PlayerCard = ({ playerName, onNotesUpdate }) => {
             }}
             className="text-center text-2xl font-bold"
           >
-            Find them in the cosmos...
+            Find them...
           </motion.p>
         </motion.div>
       )}
