@@ -97,7 +97,7 @@ function App() {
           </motion.div>
         )}
 
-        <div className="w-full md:w-1/2 lg:w-5/12 order-2 md:order-1 md:mx-auto">
+        <div className="w-full md:w-1/2 lg:w-5/12 flex items-center justify-center md:items-start md:justify-start order-2 md:order-1 md:mx-auto">
           <PlayerCard playerName={playerName} onNotesUpdate={handleNotesUpdate} />
         </div>
       </motion.div>

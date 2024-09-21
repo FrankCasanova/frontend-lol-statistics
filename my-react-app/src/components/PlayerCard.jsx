@@ -22,7 +22,7 @@ const PlayerCard = ({ playerName, onNotesUpdate }) => {
       try {
         const encodedPlayerName = encodeURIComponent(playerName);
         const response = await fetch(
-          `https://player-value-e6pfvrexw-frankcasanovas-projects.vercel.app/api/v1/playerprofile-data?name=${encodedPlayerName}`
+          `https://player-value-rigjlp26h-frankcasanovas-projects.vercel.app/api/v1/playerprofile-data?name=${encodedPlayerName}`
         );
 
         if (!response.ok) {
@@ -31,22 +31,24 @@ const PlayerCard = ({ playerName, onNotesUpdate }) => {
 
         const data = await response.json();
         setPlayerData(data);
-
-        if (onNotesUpdate && data.champ_info) {
-          onNotesUpdate(data.champ_info.definitive_info);
-        }
       } catch (err) {
         setError(err.message);
-        if (onNotesUpdate) {
-          onNotesUpdate(null);
-        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchPlayerData();
-  }, [playerName, onNotesUpdate]);
+  }, [playerName]); // Removed onNotesUpdate from the dependency array
+
+  // Call onNotesUpdate when playerData changes
+  useEffect(() => {
+    if (onNotesUpdate && playerData?.champ_info) {
+      onNotesUpdate(playerData.champ_info.definitive_info);
+    } else if (onNotesUpdate && !playerData) {
+      onNotesUpdate(null);
+    }
+  }, [playerData, onNotesUpdate]);
 
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -164,12 +166,7 @@ const PlayerCard = ({ playerName, onNotesUpdate }) => {
             variants={itemVariants}
             className="p-2 bg-gray-900 bg-opacity-75 text-xs flex justify-between items-center"
           >
-            <div className="flex items-center gap-2">
-              <span>MMR Points: {playerData.mmr.mmr}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>MMR Rank: {playerData.mmr.rank}</span>
-            </div>
+
           </motion.div>
         </motion.div>
       )}
